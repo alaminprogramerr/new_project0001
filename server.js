@@ -19,8 +19,6 @@ mongoos.connect('mongodb://localhost/rakesh-app',{useFindAndModify:false,useUnif
     console.log('Mongodb  connected')
 }))
 
-
-
 app.use(userRouter)
 app.listen(PORT,()=>{
     console.log(`Server started on port `,PORT)

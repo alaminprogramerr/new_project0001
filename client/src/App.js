@@ -1,38 +1,39 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, BrowserRouter, Switch } from "react-router-dom";
 
-import PublicRoute from './Component/util/PublicRoute'
-import ProtectedRoute from './Component/util/ProtectedRoute'
+import routes from "./routes";
+import withTracker from "./withTracker";
 
-import Home from './Component/ProtectedComponent/Home'
-import CreatePost from './Component/ProtectedComponent/CreatePost'
+import "bootstrap/dist/css/bootstrap.min.css";
+import './utl/shards-dashboards.1.1.0.min.css'
 
 
+import Login from './components/public/Login'
+import Register from './components/public/Register'
 
-import Login from './Component/PublicComponent/Login'
-import Register from './Component/PublicComponent/Register'
-import EditPost from './Component/ProtectedComponent/EditPost';
-
-class App extends Component {
-    render() { 
+import ProtectedRoute from './utl/ProtectedRoute'
+import PublicRoute from './utl/PublicRoute'
+export default () => (
+  <Router>
+    <div>
+      {routes.map((route, index) => {
         return (
-            <BrowserRouter>
-                <Switch>
-                    <ProtectedRoute path="/home" component={Home} />
-                    <ProtectedRoute path="/create-post" component={CreatePost} />
-                    <ProtectedRoute path="/edit-post" component={EditPost} />
-
-
-
-
-
-                    <PublicRoute  path='/login' component={Login}/>
-                    <PublicRoute  path='/register' component={Register}/>
-                    <Redirect from="/" to="/home"/>
-                </Switch>
-            </BrowserRouter>
+          <ProtectedRoute
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={withTracker(props => {
+              return (
+                <route.layout {...props}>
+                  <route.component {...props} />
+                </route.layout>
+              );
+            })}
+          />
         );
-    }
-}
- 
-export default App;
+      })}
+      <PublicRoute path="/login"  component={Login}/>
+      <PublicRoute path="/register"  component={Register}/>
+    </div>
+  </Router>
+);

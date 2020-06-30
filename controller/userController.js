@@ -6,12 +6,10 @@ const jwt=require('jsonwebtoken')
 
 
 const register=(req,res)=>{
-    console.log(req.body)
     const verify=customValidator.registerValidator(req)
     if(!verify.isValid){
         return res.status(400).json(verify.error)
     }
-    console.log('verifyed')
     userModel.findOne({email:req.body.email})
     .then(user=>{
         if(user){
@@ -27,8 +25,7 @@ const register=(req,res)=>{
                 password:hash,
             }).save()
             .then(user=>{
-                console.log(user)
-                console.log('user registered')
+                console.log('user registered ')
                 res.status(200).json({massage:'Register successfull !!'})
             })
             .catch(error=>{
