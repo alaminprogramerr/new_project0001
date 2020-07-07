@@ -46,16 +46,16 @@ class Register extends React.Component {
       <div>
         <div className="col-md-4 offset-md-4 formContainer  ">
         <div className="row">
-          <div className="col-md-8 offset-md-">
+          <div className="col-md-8 offset-md-2">
             <div className='header'>
               <div className="row  formContainer">
-                <div className="col-md-4">Logo</div>
+                <div className="col-md-4" style={{fontSize:'30px'}}>Logo</div>
                 <div className="col-md-8 ">
-                    <h6 style={{fontSize:'20px',fontWeight:'500', }} >Enterprise Pricing and Discounts</h6>
+                    <h6 className="heading" >Enterprise Pricing and Discounts</h6>
                 </div>
               </div>
               <div >
-                <h2 style={{fontWeight:"700"}} className="mt-5">Sign up</h2>
+                <h2  className="mt-5 form-header">Sign up</h2>
                 <>
                 <div className="single-filed">
                   <input onChange={(e)=>{this.changeHandler(e)}} name='name' type="text" className="form-control" placeholder="Name"/>

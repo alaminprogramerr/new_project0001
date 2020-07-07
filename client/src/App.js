@@ -13,6 +13,7 @@ import Register from './components/public/Register'
 
 import ProtectedRoute from './utl/ProtectedRoute'
 import PublicRoute from './utl/PublicRoute'
+import ForgetPassword from "./components/public/ForgetPassword";
 export default () => (
   <Router>
     <div>
@@ -32,6 +33,7 @@ export default () => (
           />
         );
       })}
+      <PublicRoute path="/forget-password"  component={ForgetPassword}/>
       <PublicRoute path="/login"  component={Login}/>
       <PublicRoute path="/register"  component={Register}/>
     </div>

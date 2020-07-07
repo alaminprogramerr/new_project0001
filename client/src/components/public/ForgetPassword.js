@@ -13,7 +13,7 @@ import {
   FormInput,
   Button
 } from "shards-react";
-class Register extends React.Component {
+class ForgetPassword extends React.Component {
   state={
     name:'',
     email:'',
@@ -51,11 +51,11 @@ class Register extends React.Component {
               <div className="row  formContainer">
                 <div className="col-md-4">Logo</div>
                 <div className="col-md-8 ">
-                    <h6  className="heading loginHeader">Enterprise Pricing and Discounts</h6>
+                    <h6  className="heading ">Enterprise Pricing and Discounts</h6>
                 </div>
               </div>
               <div >
-                <h2 className="mt-5 form-header">Sign in</h2>
+                <p className="mt-5 ">Forget Password</p>
                 <>
                 <div className="single-filed">
                   <input onChange={(e)=>{this.changeHandler(e)}} name="email" type="email" className="form-control" placeholder="Email"/>
@@ -64,27 +64,9 @@ class Register extends React.Component {
                     <p className="text-danger">{this.state.error.email}</p>:""
                   }
                 </div>
-                <div className="single-filed">
-                  <input onChange={(e)=>{this.changeHandler(e)}} name="password" className="form-control" type="password" placeholder="Password"/>
 
-                  {
-                    this.state.error.password?
-                    <p className="text-danger">{this.state.error.password}</p>:""
-                  }
-                </div>
-                <div className="single-filed">
-                  <div style={{fontSize:'12px'}}>
-                    <input id="check" type="checkbox" />
-                    <label htmlFor="check" className="ml-1 mr-4">Keep me Looged in</label>
-                    <Link to='/forget-password' className="ml-auto">Forget password ?</Link>
-                  </div>
-                  {
-                    this.state.error.massage?
-                    <p className="text-danger">{this.state.error.massage}</p>:""
-                  }
-                </div>
                   <button className="btn btn-info" style={{fontSize:'16px',width:'100%'}} onClick={(event)=>{this.submitHandler(event)}}>Sign up</button>
-                  <p className="mt-3">Dont have account ? <Link to='/register'>Sign up</Link> </p>
+                  <p  style={{marginTop:'150px'}}>Dont have account ? <Link to='/register'>Sign up</Link> </p>
                 </>
               </div>
           </div>
@@ -97,4 +79,4 @@ class Register extends React.Component {
 
 }
 
-export default Register
+export default ForgetPassword
